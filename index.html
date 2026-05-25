@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Angel Pro Academy | Professional Training Institute</title>
+  <!-- Google Fonts + Font Awesome for Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefcf7;
+      color: #1e1e2a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* container utility */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* header / navigation */
+    header {
+      background: white;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03), 0 4px 8px -6px rgba(0, 0, 0, 0.02);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(0px);
+      background-color: rgba(255, 255, 255, 0.98);
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    .logo h1 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #B87333, #D4AF37);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+    .logo p {
+      font-size: 0.75rem;
+      color: #5b5b6e;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2c2c3a;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #B87333;
+      border-bottom: 2px solid #D4AF37;
+      padding-bottom: 4px;
+    }
+
+    .mobile-menu {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    /* hero section with image */
+    .hero {
+      background: linear-gradient(112deg, #fff6eb 0%, #fffcf5 100%);
+      padding: 3.5rem 0;
+    }
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+    .hero-content {
+      flex: 1.2;
+    }
+    .hero-content .badge {
+      background: #ffedd5;
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #b45f2b;
+      margin-bottom: 1rem;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: #1f1f2b;
+    }
+    .hero-highlight {
+      color: #B87333;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #4a4a5a;
+      margin: 1rem 0 1.6rem;
+      max-width: 90%;
+    }
+    .contact-info-hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+    .contact-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 60px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      font-weight: 500;
+    }
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 32px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      width: 100%;
+      object-fit: cover;
+      height: auto;
+      background: #f3ede5;
+    }
+
+    /* section headings */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: #D4AF37;
+      border-radius: 4px;
+    }
+
+    /* about, contact, etc */
+    .about-grid, .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+    .about-text, .contact-info-box {
+      flex: 1.2;
+    }
+    .about-img {
+      flex: 1;
+      border-radius: 28px;
+      overflow: hidden;
+    }
+    .about-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .contact-details {
+      background: #f8f5f0;
+      padding: 1.5rem;
+      border-radius: 28px;
+      margin-top: 1rem;
+    }
+    .contact-details i {
+      width: 32px;
+      color: #B87333;
+    }
+    .map-placeholder {
+      background: #e7e0d7;
+      border-radius: 24px;
+      padding: 1rem;
+      text-align: center;
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    /* cards / gallery / professional detail */
+    .professional-detail {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+      margin: 2rem 0;
+    }
+    .features-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .feature {
+      flex: 1 1 200px;
+      background: #fefaf4;
+      padding: 1rem;
+      border-radius: 24px;
+      text-align: center;
+      transition: all 0.2s;
+      border: 1px solid #f3ede5;
+    }
+    .feature i {
+      font-size: 2rem;
+      color: #D4AF37;
+    }
+
+    /* page sections (for privacy, terms, about hidden content) */
+    .page-section {
+      display: none;
+      padding: 3rem 0;
+      background: white;
+      border-radius: 32px;
+      margin: 1rem 0;
+    }
+    .page-section.active-section {
+      display: block;
+    }
+    .legal-content {
+      background: #fbf9f6;
+      padding: 2rem;
+      border-radius: 28px;
+      line-height: 1.6;
+    }
+    .legal-content h3 {
+      margin-top: 1.5rem;
+      color: #B87333;
+    }
+
+    footer {
+      background: #1f1f2b;
+      color: #d6d6e0;
+      padding: 2rem 0 1rem;
+      margin-top: 3rem;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: start;
+    }
+    .footer-copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #2e2e3e;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+    }
+    .footer-links a {
+      color: #e0bf8f;
+      margin-right: 1.5rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    button, .nav-link-click {
+      cursor: pointer;
+    }
+    @media (max-width: 780px) {
+      .navbar {
+        flex-direction: row;
+      }
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: white;
+        padding: 1rem 0;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .mobile-menu {
+        display: block;
+      }
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .hero-content p {
+        max-width: 100%;
+      }
+      .contact-info-hero {
+        flex-direction: column;
+      }
+      .container {
+        padding: 0 20px;
+      }
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid #B87333;
+      padding: 0.6rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <h1>ANGEL PRO ACADEMY</h1>
+        <p>Excellence in Professional Training</p>
+      </div>
+      <div class="mobile-menu" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
+        <li><a href="#" data-page="about" class="nav-link">About</a></li>
+        <li><a href="#" data-page="contact" class="nav-link">Contact</a></li>
+        <li><a href="#" data-page="privacy" class="nav-link">Privacy Policy</a></li>
+        <li><a href="#" data-page="terms" class="nav-link">Terms & Condition</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <!-- HOME SECTION (visible by default) -->
+    <div id="home-section" class="page-section active-section">
+      <!-- Hero with image -->
+      <div class="hero">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <span class="badge"><i class="fas fa-star-of-life"></i> Since 2015</span>
+            <h1>Shape Your Future with <span class="hero-highlight">Angel Pro Academy</span></h1>
+            <p>Professional coaching, real-world skills, and career mentorship. Join the most trusted academy in Bidar.</p>
+            <div class="contact-info-hero">
+              <div class="contact-chip"><i class="fas fa-phone-alt"></i> 8369797314</div>
+              <div class="contact-chip"><i class="fas fa-envelope"></i> Maheshlake@gmail.com</div>
+              <div class="contact-chip"><i class="fas fa-map-marker-alt"></i> Basavaling Complex, Shivanagar, Bidar</div>
+            </div>
+          </div>
+          <div class="hero-image">
+            <!-- Professional training image (academy atmosphere) -->
+            <img src="https://placehold.co/600x400/FFF1E0/B87333?text=Angel+Pro+Academy+Training" alt="Angel Pro Academy Training Session" style="background: #e8ddcf;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Professional detailing section with image -->
+      <div class="professional-detail">
+        <h2 class="section-title">Why Angel Pro Academy? <span style="font-size: 1.2rem;">⚡</span></h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
+          <div style="flex: 1.2;">
+            <p style="font-size:1.05rem; margin-bottom:1rem;">We blend modern pedagogy with hands-on projects to ensure 100% skill mastery. Our certified trainers have 10+ years of industry experience. Career guidance, soft skills, and placement assistance — all under one roof.</p>
+            <div class="features-list">
+              <div class="feature"><i class="fas fa-chalkboard-user"></i><h4>Expert Faculty</h4><small>Industry mentors</small></div>
+              <div class="feature"><i class="fas fa-laptop-code"></i><h4>Live Projects</h4><small>Real-world exposure</small></div>
+              <div class="feature"><i class="fas fa-certificate"></i><h4>Certification</h4><small>Recognized credentials</small></div>
+            </div>
+          </div>
+          <div style="flex: 0.9;">
+            <img src="https://placehold.co/500x350/EEE5DB/8B5A2B?text=Professional+Training+Setup" alt="Professional detailing academy image" style="border-radius: 28px; width:100%; box-shadow:0 15px 25px -10px rgba(0,0,0,0.1);">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about-section" class="page-section">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 class="section-title">About Angel Pro Academy</h2>
+          <p style="margin-top: 1rem;">Located at Basavaling Complex, 1st floor near Domino's Pizza, Shivanagar Hyderabad Nanded road, Bidar -585401, Angel Pro Academy is a premier institute dedicated to empowering students and professionals through industry-relevant courses.</p>
+          <p style="margin-top: 1rem;">We specialize in computer courses, personality development, digital marketing, programming, and financial literacy. Our mission is to bridge the skill gap and create job-ready talent.</p>
+          <p style="margin-top: 1rem;"><strong>📍 Address:</strong> Basavaling complex 1st floor, near Domino's Pizza, Shivanagar Hyderabad Nanded road, Bidar -585401</p>
+          <p><strong>📞 Contact:</strong> 8369797314 &nbsp;|&nbsp; <strong>✉️ Email:</strong> Maheshlake@gmail.com</p>
+          <div style="margin-top: 1.5rem;"><i class="fas fa-check-circle" style="color:#D4AF37;"></i> 500+ Students Trained &nbsp;&nbsp; <i class="fas fa-trophy" style="color:#D4AF37;"></i> 93% Placement Assistance</div>
+        </div>
+        <div class="about-img">
+          <img src="https://placehold.co/550x400/D9CFC1/B87333?text=Academy+Classroom+Interior" alt="About academy image">
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact-section" class="page-section">
+      <div class="contact-grid">
+        <div class="contact-info-box">
+          <h2 class="section-title">Get in Touch</h2>
+          <div class="contact-details">
+            <p><i class="fas fa-map-pin"></i> <strong>Visit us:</strong> Basavaling complex 1st floor, near Domino's Pizza, Shivanagar Hyderabad Nanded road, Bidar -585401</p>
+            <p style="margin-top: 1rem;"><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> <a href="tel:8369797314" style="color:#B87333; text-decoration:none;">8369797314</a></p>
+            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:Maheshlake@gmail.com" style="color:#B87333;">Maheshlake@gmail.com</a></p>
+            <p><i class="fas fa-clock"></i> <strong>Working Hours:</strong> Mon-Sat: 9:00 AM - 7:00 PM</p>
+          </div>
+          <div class="map-placeholder">
+            <i class="fas fa-location-dot" style="font-size: 1.4rem;"></i> <strong>📍 Landmark:</strong> Near Domino's Pizza, Shivanagar, Hyderabad Nanded Road, Bidar - 585401
+            <div style="margin-top: 10px; background:#dad1c5; border-radius:20px; padding:10px; font-size:0.8rem;">📍 Google Maps: Basavaling Complex, 1st floor, Domino's Pizza lane, Bidar</div>
+          </div>
+        </div>
+        <div style="flex:1; text-align:center;">
+          <img src="https://placehold.co/500x400/CAB89E/7A4E2A?text=Reach+Us+Map+Location" alt="contact location image" style="border-radius: 32px; width:100%;">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIVACY POLICY -->
+    <div id="privacy-section" class="page-section">
+      <div class="legal-content">
+        <h2>Privacy Policy</h2>
+        <p><strong>Last updated:</strong> 2025</p>
+        <p>Angel Pro Academy ("we", "our", "us") respects your privacy. This policy describes how we collect, use, and protect your personal information when you visit our website or contact us.</p>
+        <h3>1. Information We Collect</h3>
+        <p>We may collect personal details such as name, email address, phone number, and location when you inquire about courses, subscribe to updates, or contact us via email/phone.</p>
+        <h3>2. How We Use Information</h3>
+        <p>To respond to your queries, provide enrollment services, send important updates, and improve our academy services. We do not sell or share your data with third parties for marketing.</p>
+        <h3>3. Data Security</h3>
+        <p>We implement reasonable security practices to protect your data from unauthorized access.</p>
+        <h3>4. Cookies</h3>
+        <p>Our website may use cookies to enhance user experience, but no sensitive data is stored without consent.</p>
+        <h3>5. Contact Us</h3>
+        <p>For privacy concerns, email us at Maheshlake@gmail.com or call 8369797314.</p>
+      </div>
+    </div>
+
+    <!-- TERMS & CONDITIONS -->
+    <div id="terms-section" class="page-section">
+      <div class="legal-content">
+        <h2>Terms and Conditions</h2>
+        <p>Welcome to Angel Pro Academy. By accessing or using our website, contacting us, or enrolling in courses, you agree to comply with these terms.</p>
+        <h3>1. Use of Information</h3>
+        <p>All content provided on this site is for informational purposes. Course fees, schedules, and availability are subject to change without notice.</p>
+        <h3>2. Registration & Payments</h3>
+        <p>Course fees must be paid as per the academy’s fee structure. Refund policies are provided during registration.</p>
+        <h3>3. Code of Conduct</h3>
+        <p>Students and visitors must respect the academy premises and staff. Disruptive behavior may lead to dismissal without refund.</p>
+        <h3>4. Intellectual Property</h3>
+        <p>All training materials, logos, and website content are property of Angel Pro Academy and may not be reproduced without permission.</p>
+        <h3>5. Limitation of Liability</h3>
+        <p>Angel Pro Academy is not liable for any indirect damages arising from the use of our services or facilities.</p>
+        <h3>6. Governing Law</h3>
+        <p>These terms are governed by the laws of India, and any disputes shall be subject to Bidar jurisdiction.</p>
+        <p>For any queries regarding terms, contact us directly.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3 style="color:#e9cf9b;">Angel Pro Academy</h3>
+        <p>Empowering careers with professional training & mentorship.</p>
+        <div style="margin-top: 0.8rem;">
+          <i class="fas fa-phone-alt"></i> 8369797314<br>
+          <i class="fas fa-envelope"></i> Maheshlake@gmail.com
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <p><a data-page="home" class="footer-nav-link">Home</a></p>
+        <p><a data-page="about" class="footer-nav-link">About Us</a></p>
+        <p><a data-page="contact" class="footer-nav-link">Contact</a></p>
+        <p><a data-page="privacy" class="footer-nav-link">Privacy Policy</a></p>
+        <p><a data-page="terms" class="footer-nav-link">Terms & Condition</a></p>
+      </div>
+      <div>
+        <h4>Visit Us</h4>
+        <p>Basavaling complex 1st floor,<br> near Domino's Pizza, Shivanagar<br> Hyderabad Nanded road, Bidar -585401</p>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      &copy; <span id="currentYear"></span> Angel Pro Academy. All rights reserved. | Designed with <i class="fas fa-heart" style="color:#D4AF37;"></i> for professional excellence.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Simple page navigation
+  const sections = {
+    home: 'home-section',
+    about: 'about-section',
+    contact: 'contact-section',
+    privacy: 'privacy-section',
+    terms: 'terms-section'
+  };
+
+  function activatePage(pageId) {
+    // hide all sections
+    Object.values(sections).forEach(sectionId => {
+      const el = document.getElementById(sectionId);
+      if (el) el.classList.remove('active-section');
+    });
+    const activeSectionId = sections[pageId];
+    if (activeSectionId) {
+      const activeEl = document.getElementById(activeSectionId);
+      if (activeEl) activeEl.classList.add('active-section');
+    }
+    // update active nav styles
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('data-page') === pageId) {
+        link.classList.add('active');
+      }
+    });
+    // scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // attach event listeners for nav links
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const page = link.getAttribute('data-page');
+      if (page && sections[page]) {
+        activatePage(page);
+        // close mobile menu if open
+        const navList = document.getElementById('navLinks');
+        if (navList.classList.contains('show')) navList.classList.remove('show');
+      }
+    });
+  });
+
+  // footer navigation links
+  document.querySelectorAll('.footer-nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const page = link.getAttribute('data-page');
+      if (page && sections[page]) activatePage(page);
+    });
+  });
+
+  // Mobile menu toggle
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (mobileBtn) {
+    mobileBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
+
+  // Set current year in copyright
+  document.getElementById('currentYear').innerText = new Date().getFullYear();
+
+  // Ensure default is home active on load
+  activatePage('home');
+
+  // Also make direct images more descriptive and ensure contact info is prominently visible
+  // Additional: professional detailing image is already present plus academy logo branding.
+  // adding hover effect for images
+  console.log("Angel Pro Academy website ready");
+</script>
+</body>
+</html>
